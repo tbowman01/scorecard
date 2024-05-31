@@ -41,3 +41,58 @@ updates:
   rebase-strategy: disabled
   commit-message:
       prefix: ":seedling:"
+
+- package-ecosystem: docker
+  directory: /
+  schedule:
+    interval: daily
+
+- package-ecosystem: docker
+  directory: /attestor
+  schedule:
+    interval: daily
+
+- package-ecosystem: docker
+  directory: /clients/githubrepo/roundtripper/tokens/server
+  schedule:
+    interval: daily
+
+- package-ecosystem: docker
+  directory: /cron/internal/bq
+  schedule:
+    interval: daily
+
+- package-ecosystem: docker
+  directory: /cron/internal/cii
+  schedule:
+    interval: daily
+
+- package-ecosystem: docker
+  directory: /cron/internal/controller
+  schedule:
+    interval: daily
+
+- package-ecosystem: docker
+  directory: /cron/internal/webhook
+  schedule:
+    interval: daily
+
+- package-ecosystem: docker
+  directory: /cron/internal/worker
+  schedule:
+    interval: daily
+
+- package-ecosystem: gomod
+  directory: /
+  schedule:
+    interval: daily
+
+- package-ecosystem: gomod
+  directory: /tools
+  schedule:
+    interval: daily
+
+- package-ecosystem: maven
+  directory: /checks/raw/testdata/.github/workflows
+  schedule:
+    interval: daily
