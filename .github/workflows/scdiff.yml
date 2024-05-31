@@ -15,6 +15,11 @@ jobs:
     permissions:
       pull-requests: write # to create the PR comment
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@f086349bfa2bd1361f7909c78558e816508cdc10 # v2.8.0
+        with:
+          egress-policy: audit
+
       - name: share link to workflow run
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
         with:
@@ -30,6 +35,11 @@ jobs:
     if: ${{ (github.event.issue.pull_request) && (contains(github.event.comment.body, '/scdiff generate')) }}
     runs-on: [ubuntu-latest]
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@f086349bfa2bd1361f7909c78558e816508cdc10 # v2.8.0
+        with:
+          egress-policy: audit
+
       - name: create file of repos to analyze
         run: |
           cat <<EOF > $HOME/repos.txt
