@@ -87,7 +87,7 @@ jobs:
           command: make e2e-gh-token
 
       - name: codecov
-        uses: codecov/codecov-action@ab904c41d6ece82784817410c45d8b8c02684457 # 3.1.6
+        uses: codecov/codecov-action@125fc84a9a348dbcf27191600683ec096ec9021c # 4.4.1
         with:
          files: "*e2e-coverage.out"
          verbose: true
