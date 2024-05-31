@@ -1,8 +1,15 @@
 name: Scorecard analysis workflow
 on:
+  # For Branch-Protection check. Only the default branch is supported. See
+  # https://github.com/ossf/scorecard/blob/main/docs/checks.md#branch-protection
+  branch_protection_rule:
+  # To guarantee Maintained check is occasionally updated. See
+  # https://github.com/ossf/scorecard/blob/main/docs/checks.md#maintained
   push:
-    # Only the default branch is supported.
+    branches: [$default-branch]
+  pull_request:
     branches:
+    - develop
     - main
   schedule:
     # Weekly on Saturdays.
@@ -15,10 +22,12 @@ jobs:
     name: Scorecard analysis
     runs-on: ubuntu-latest
     permissions:
-      # Needed for Code scanning upload
+      # Needed to upload the results to code-scanning dashboard.
       security-events: write
-      # Needed for GitHub OIDC token if publish_results is true
+      # Needed to publish results and get a badge (see publish_results below).
       id-token: write
+      contents: read
+      actions: read
 
     steps:
       - name: Harden Runner
