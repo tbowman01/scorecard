@@ -17,12 +17,15 @@ name: gitlab-tests
 permissions: read-all
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
+      - develop
   pull_request:
     branches:
       - main
+      - develop
 
 env:
   GO_VERSION: 1.22
